@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloatingText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI floatingText;
+    [SerializeField] private Text floatingText;
 
     private Coroutine _fadeCoroutine;
     private WaitForSeconds waitForSeconds;
@@ -15,7 +15,7 @@ public class FloatingText : MonoBehaviour
 
     private void Awake()
     {
-        floatingText = GetComponent<TextMeshProUGUI>();
+        floatingText = GetComponent<Text>();
 
         waitForSeconds = new WaitForSeconds(0.1f);
 
