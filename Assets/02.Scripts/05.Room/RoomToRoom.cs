@@ -1,11 +1,13 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RoomToRoom : MonoBehaviour
 {
     [SerializeField] private Collider2D topEntranceCollider;
     [SerializeField] private Collider2D bottomEntranceCollider;
+    
     public Anomaly anomaly;
     public int roomNumber;
+    public Text roomNumbertxt;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -23,6 +25,7 @@ public class RoomToRoom : MonoBehaviour
             //몬스터 초기화
             anomaly.initAnomaly();//리셋 후 초기화
             collision.transform.position = new Vector3(25f, 1f);
+            roomNumbertxt.text = $"{roomNumber}";
         }
     }
 }
