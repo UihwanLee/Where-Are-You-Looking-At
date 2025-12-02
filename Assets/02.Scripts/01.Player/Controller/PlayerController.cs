@@ -9,7 +9,10 @@ public class PlayerController : BaseController
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
+        {
             moveDirection = context.ReadValue<Vector2>();
+            moveSpeed = GameManager.Instance.Player.Stat.Speed;
+        }
         else if (context.phase == InputActionPhase.Canceled)
             moveDirection = Vector2.zero;
     }

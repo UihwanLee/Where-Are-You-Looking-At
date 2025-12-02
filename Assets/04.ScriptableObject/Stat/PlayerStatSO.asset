@@ -17,6 +17,6 @@ MonoBehaviour:
   <RecoveryHp>k__BackingField: 0
   <Defense>k__BackingField: 0
   <Evasion>k__BackingField: 0
-  <Speed>k__BackingField: 0
+  <Speed>k__BackingField: 5
   <Luck>k__BackingField: 0
   <AbsorptionItem>k__BackingField: 0

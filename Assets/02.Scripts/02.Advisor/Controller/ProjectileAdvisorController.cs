@@ -2,33 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ProjectileAdvisorController : BaseAdvisorController
 {
     [Header("Shooting")]
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private float rotateSpeed = 1f;
-    private float fireTimer = 0f;
+    private float attackTimer = 0f;
 
     private void Update()
     {
-        fireTimer += Time.deltaTime;
+        attackTimer += Time.deltaTime;
 
-        // �Ź� ���� ����� Ÿ�� Ž��
+        // find target
         FindNearestTarget();
 
         if (currentTarget != null)
         {
             Rotate();
-            if (fireTimer >= attackSpeed)
+            if (attackTimer >= stat.AttackSpeed)
             {
                 Shoot();
-                fireTimer = 0f;
+                attackTimer = 0f;
             }
         }
     }
@@ -44,6 +43,8 @@ public class ProjectileAdvisorController : BaseAdvisorController
 
     private void Shoot()
     {
-        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        GameObject go = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        ProjectileController proj = go.GetComponent<ProjectileController>();
+        proj.Init(stat.AttackRange);
     }
 }

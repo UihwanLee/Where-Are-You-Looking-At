@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3114550761537760569}
   - component: {fileID: 8133693364943884724}
+  - component: {fileID: -2867601505417159455}
   m_Layer: 0
   m_Name: Adv Skelet
   m_TagString: Untagged
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e902e9a71722e0c45ac65b346ef5fa12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 100
+  stat: {fileID: -2867601505417159455}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -138,6 +139,31 @@ MonoBehaviour:
   attackSpeed: 1
   firePoint: {fileID: 8763733838382920091}
   spriteRenderer: {fileID: 168581114926730691}
+--- !u!114 &-2867601505417159455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850200527568580370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4609a86cc4825ca4687fa38213e9758e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 5e2a87b265ab0f74e8fa1683d5e2855a, type: 2}
+  atk:
+    _value: 0
+  attackSpeed:
+    _value: 0
+  attackRange:
+    _value: 0
+  critChance:
+    _value: 0
+  critMultiplier:
+    _value: 0
+  projectileSpeed:
+    _value: 0
 --- !u!1 &2288682730661210280
 GameObject:
   m_ObjectHideFlags: 0

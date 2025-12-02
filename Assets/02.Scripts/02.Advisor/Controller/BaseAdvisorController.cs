@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BaseAdvisorController : MonoBehaviour
 {
+    [Header("Status")]
+    [SerializeField] protected AdvisorStat stat;
+
     [Header("Targeting")]
-    [SerializeField] protected float range;
     [SerializeField] private LayerMask targetMask;
 
     protected Transform currentTarget;
 
     protected bool FindNearestTarget()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, targetMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, stat.AttackRange, targetMask);
 
         if (hits.Length == 0)
         {

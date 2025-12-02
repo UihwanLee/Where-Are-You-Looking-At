@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifeDistance = 100f;
+    [SerializeField] private float speed;
 
+    private float lifeDistance;
     private Vector3 startPosition;
 
     private void OnEnable()
@@ -29,5 +29,10 @@ public class ProjectileController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Init(float lifeDistance)
+    {
+        this.lifeDistance = lifeDistance;
     }
 }
