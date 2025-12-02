@@ -9,6 +9,7 @@ public class BaseController : MonoBehaviour
     protected Vector2 moveDirection = Vector2.zero;
     public Vector2 MoveDirection { get { return moveDirection; } }
 
+    [Header("Status")]
     protected float moveSpeed = 5f;
 
     private void FixedUpdate()
