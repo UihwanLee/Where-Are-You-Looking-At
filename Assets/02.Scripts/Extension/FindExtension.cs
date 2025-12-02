@@ -16,4 +16,16 @@ public static class FindExtension
 
         return null;
     }
+
+    public static T FindParent<T>(this Transform transform, string name) where T : MonoBehaviour
+    {
+        T[] parents = transform.GetComponentsInParent<T>();
+        foreach(var parent in parents)
+        {
+            if(parent.name == name)
+                return parent;
+        }
+
+        return null;
+    }
 }
