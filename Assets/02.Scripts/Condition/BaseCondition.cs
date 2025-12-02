@@ -50,4 +50,13 @@ public class BaseCondition : MonoBehaviour
             attribute.SetValue(amount);
         }
     }
+
+    public virtual void TakeDamage(Transform other, float damage, Color? color = null)
+    {
+        // damage Text 표시
+        FloatingTextPoolManager.Instance.SpawnText(TextType.UNDEF, damage.ToString(), this.transform, color);
+
+        // damage 적용
+        Sub(AttributeType.Hp, damage);
+    }
 }
