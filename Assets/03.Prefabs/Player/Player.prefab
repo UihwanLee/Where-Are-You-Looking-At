@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 5384693771026658780}
   - component: {fileID: 3458945697442233249}
   - component: {fileID: 5681767793242417809}
+  - component: {fileID: -2763448378804478550}
+  - component: {fileID: -2274925980887678612}
+  - component: {fileID: 2880515989786748118}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -158,6 +161,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2871819489418298915}
+--- !u!114 &-2763448378804478550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518500296719928431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562a0479be96b8f4d9b5efecf3fcc132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2274925980887678612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518500296719928431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead003d6791e94c48a344ddb0e20e0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp:
+    _value: 0
+  hp:
+    _value: 0
+  maxExp:
+    _value: 0
+  exp:
+    _value: 0
+  gold:
+    _value: 0
+--- !u!114 &2880515989786748118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518500296719928431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33db2e51e2e72f64d98e5745a52ef085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: dd1497f346ad0804f96dc7231f002e00, type: 2}
+  maxHp:
+    _value: 0
+  speed:
+    _value: 0
+  reproductionHp:
+    _value: 0
+  recoveryHp:
+    _value: 0
+  defense:
+    _value: 0
+  evasion:
+    _value: 0
+  luck:
+    _value: 0
+  absorptionItem:
+    _value: 0
 --- !u!1 &5903071477145579604
 GameObject:
   m_ObjectHideFlags: 0

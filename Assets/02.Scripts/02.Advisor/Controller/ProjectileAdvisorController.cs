@@ -19,7 +19,7 @@ public class ProjectileAdvisorController : BaseAdvisorController
     {
         fireTimer += Time.deltaTime;
 
-        // ¸Å¹ø °¡Àå °¡±î¿î Å¸°Ù Å½»ö
+        // ï¿½Å¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ Å½ï¿½ï¿½
         FindNearestTarget();
 
         if (currentTarget != null)
