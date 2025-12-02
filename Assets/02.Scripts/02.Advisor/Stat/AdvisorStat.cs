@@ -80,12 +80,12 @@ public class AdvisorStat : MonoBehaviour
 
     private void Initialize()
     {
-        atk = new Attribute(data.Atk);
-        attackSpeed = new Attribute(data.AttackSpeed);
-        attackRange = new Attribute(data.AttackRange);
-        critChance = new Attribute(data.CritChance);
-        critMultiplier = new Attribute(data.CritMultiplier);
-        projectileSpeed = new Attribute(data.ProjectileSpeed);
+        atk = new Attribute(0, data.Atk);
+        attackSpeed = new Attribute(1, data.AttackSpeed);
+        attackRange = new Attribute(2, data.AttackRange);
+        critChance = new Attribute(3, data.CritChance);
+        critMultiplier = new Attribute(4, data.CritMultiplier);
+        projectileSpeed = new Attribute(5, data.ProjectileSpeed);
 
         attributeDict = new Dictionary<AttributeType, Attribute>();
         attributeDict.Add(AttributeType.Atk, atk);
