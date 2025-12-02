@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PerkTargetType
+public enum AdviceTargetType
 {
     Player,
     Advisor,
 }
 
-[CreateAssetMenu(fileName = "NewPerk", menuName = "Data/Perk")]
-public class PerkSO : ScriptableObject
+[CreateAssetMenu(fileName = "NewAdvice", menuName = "Data/Advice")]
+public class AdviceSO : ScriptableObject
 {
     [field: Header("ID")]
     [field: SerializeField] public int ID { get; private set; }
@@ -23,6 +23,6 @@ public class PerkSO : ScriptableObject
     [field: SerializeField] public string EN { get; private set; }
     [field: Header("효과 - Value")]
     [field: SerializeField] public string Value { get; private set; }
-    [field: Header("적용 대상")]
-    [field: SerializeField] public PerkTargetType TargetType { get; private set; }
+    [field: Header("효과 대상")]
+    [field: SerializeField] public AdviceTargetType TargetType { get; private set; }
 }
