@@ -15,6 +15,8 @@ public class EffectInfo
     [field: SerializeField] public string Name { get; private set; }
     [field: Header("설명")]
     [field: SerializeField] public string Desc { get; private set; }
+    [field: Header("아이콘")]
+    [field: SerializeField] public Sprite Icon { get; private set; }
     [field: Header("효과 - Key")]
     [field: SerializeField] public string EN { get; private set; }
     [field: Header("효과 - Value")]
