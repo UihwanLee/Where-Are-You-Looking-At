@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
+    private static MonsterSpawner instance;
+    public static MonsterSpawner Instance { get; private set; }
+
     [Header("Spawn Settings")]
     [SerializeField] private float spawnInterval = 3f;
-    //[SerializeField] private float spawnRadius = 8f;
     [SerializeField] private int spawnCountPerInterval = 3;
     [SerializeField] private int maxMonsters = 30;
     [SerializeField] private Rect spawnArea;
@@ -20,10 +22,21 @@ public class MonsterSpawner : MonoBehaviour
 
     private Coroutine currentSpawnRoutine;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Reset()
     {
         spawnInterval = 3f;
-        //spawnRadius = 8f;
         spawnCountPerInterval = 3;
         maxMonsters = 30;
     }
@@ -62,9 +75,6 @@ public class MonsterSpawner : MonoBehaviour
     private void SpawnMonster()
     {
         if (monsterPrefab == null || spawnArea == null) return;
-
-        //Vector2 randomDir = Random.insideUnitCircle.normalized;
-        //Vector2 spawnPos = (Vector2)player.transform.position + randomDir * spawnRadius;
 
         Vector2 spawnPos = new Vector2(Random.Range(spawnArea.xMin, spawnArea.xMax), Random.Range(spawnArea.yMin, spawnArea.yMax));
 

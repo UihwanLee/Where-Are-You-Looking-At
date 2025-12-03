@@ -23,6 +23,7 @@ public class RoomToRoom : MonoBehaviour
                 Debug.Log("����");//üũ��
             }
             //���� �ʱ�ȭ
+            MonsterSpawner.Instance.ClearActiveMonster();
             anomaly.initAnomaly();//���� �� �ʱ�ȭ
             ClearWindowManager.Instance.SetClearWindow(true);
             Player player = GameManager.Instance.Player;
