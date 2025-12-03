@@ -10,13 +10,15 @@ public class ZoomInCamera : MonoBehaviour
     private float coolTime = 2f;
 
     private Transform camTr;
-    private float startY = 25f;
+    private float startY = 30f;
     private float endY = 0f;
     void Start()
     {
         cam = GetComponent<CinemachineVirtualCamera>();
         camTr = GetComponent<Transform>();
+        camTr.localPosition = new Vector3(camTr.localPosition.x, startY, camTr.localPosition.z);
         StartCoroutine(ZoomIn());
+        
     }
 
     IEnumerator ZoomIn()
@@ -30,6 +32,7 @@ public class ZoomInCamera : MonoBehaviour
 
             float newY = Mathf.Lerp(startY, endY, t);
             camTr.localPosition = new Vector3(camTr.localPosition.x, newY, camTr.localPosition.z);
+
 
             yield return null;
         }

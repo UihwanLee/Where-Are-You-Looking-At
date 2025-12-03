@@ -28,7 +28,7 @@ public class RoomToRoom : MonoBehaviour
             ClearWindowManager.Instance.SetClearWindow(true);
             Player player = GameManager.Instance.Player;
             player.transform.position = new Vector3(100f, 100f);
-            //roomNumbertxt.text = $"{roomNumber}";
+            roomNumbertxt.text = $"{roomNumber}";
         }
     }
 }
