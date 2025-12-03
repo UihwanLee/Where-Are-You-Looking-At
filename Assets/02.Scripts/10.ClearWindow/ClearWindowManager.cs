@@ -16,10 +16,17 @@ public class ClearWindowManager : MonoBehaviour
     [SerializeField] private List<Attribute> playerAttributes = new List<Attribute>();
     [SerializeField] private List<Attribute> advisorAttributes = new List<Attribute>();
 
+    // Stat Change 이벤트
     public Action<List<Attribute>> OnPlayerStatChange;    // 플레이어 Stat Change 이벤트
     public Action<List<Attribute>> OnAdvisorStatChange;   // Advisor Stat Chnage 이벤트
 
-    public Action<ISellable> OnClickItemSlotEvent;         // Item Slot Click 이벤트
+    // OnClick 이벤트
+
+    // ShopManger && InventoryManager -> OnClickSlot 누를 시 ItemInfoUI UpdateUI 수행
+    public Action<ISellable> OnClickItemSlotEvent;          // Item Slot Click 이벤트
+
+    // ShopManager -> PurchaseItem을 누를 시 InventoryManager AddItem 수행
+    public Action<ISellable> OnClickPurchaseItem;           // Item Purchase Click 이벤트
 
     public static ClearWindowManager Instance { get; private set; }
 
