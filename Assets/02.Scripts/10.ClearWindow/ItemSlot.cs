@@ -27,23 +27,18 @@ public class ItemSlot : MonoBehaviour
         icon = transform.FindChild<Image>("ItemIcon");
     }
 
-    public void Initialize(ISellable item, Action<ItemSlot> onClickEvent)
+    public void SetButton(Action<ItemSlot> onClickEvent)
     {
-        // 슬롯 세팅
-        Set(item);
-
         // Button OnClick 등록
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => onClickEvent(this));
     }
 
-    public void Set(ISellable item)
+    public void SetItem(ISellable item)
     {
         this.item = item;
         this.icon.sprite = item.GetSpriteIcon();
         this.isPurchase = false;
-
-        ResetSlot();
     }
 
     public void Click()
@@ -51,17 +46,22 @@ public class ItemSlot : MonoBehaviour
         highlight.gameObject.SetActive(true);
     }
 
+    public void UnClick()
+    {
+        highlight.gameObject.SetActive(false);
+    }
+
     public void ResetSlot()
     {
         highlight.gameObject.SetActive(false);
+        this.icon.sprite = null;
+        this.item = null;
     }
 
     public void Purchase()
     {
         isPurchase = true;
-        this.icon.sprite = null;
-        this.item = null;
-        highlight.gameObject.SetActive(false);
+        ResetSlot();
     }
 
     #region 프로퍼티 

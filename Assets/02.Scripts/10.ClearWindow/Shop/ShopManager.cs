@@ -94,7 +94,9 @@ public class ShopManager : MonoBehaviour
             ISellable randomItem = itemList[Random.Range(0, itemList.Count)];
 
             // ProductSlot 초기화
-            slot.Initialize(randomItem, OnClickSlot);
+            slot.SetItem(randomItem);
+            slot.SetButton(OnClickSlot);
+            slot.UnClick();
 
             // ProductList에 추가
             productList.Add(slot);
@@ -112,13 +114,13 @@ public class ShopManager : MonoBehaviour
 
         if(currentSlot != null)
         {
-            currentSlot.ResetSlot();
+            currentSlot.UnClick();
         }
 
         if(currentSlot == slot)
         {
             // 이미 선택한 슬롯이었다면 초기화
-            currentSlot.ResetSlot();
+            currentSlot.UnClick();
             clearWindowManager.SetPlayerStatUI();
             currentSlot = null;
         }
@@ -158,7 +160,7 @@ public class ShopManager : MonoBehaviour
         foreach(var product in productList)
         {
             ISellable randomItem = itemList[Random.Range(0, itemList.Count)];
-            product.Set(randomItem);
+            product.SetItem(randomItem);
         }
     }
 
@@ -184,9 +186,9 @@ public class ShopManager : MonoBehaviour
         if(currentSlot == null) return;
 
         // 인벤토리에 아이템 넣기
+        clearWindowManager.OnClickPurchaseItem?.Invoke(currentSlot.Item);
 
         // money 정보 갱신
-
 
         // 슬롯 구매 정보 전달
         currentSlot.Purchase();
