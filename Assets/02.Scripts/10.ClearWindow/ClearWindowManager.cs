@@ -8,6 +8,8 @@ public class ClearWindowManager : MonoBehaviour
 {
     [Header("Stat 정보")]
     [SerializeField] private PlayerStatUI playerStatUI;
+    [SerializeField] private AdvisorStatUI advisorStatUI;
+    [SerializeField] private ItemInfoUI itemInfoUI;
 
     [Header("리스트 정보")]
     [SerializeField] private List<Attribute> playerAttributes = new List<Attribute>();
@@ -16,15 +18,39 @@ public class ClearWindowManager : MonoBehaviour
     public event Action<List<Attribute>> OnPlayerStatChange;    // 플레이어 Stat Change 이벤트
     public event Action<List<Attribute>> OnAdvisorStatChange;   // Advisor Stat Chnage 이벤트
 
+    public event Action<ISellable> OnClickItemSlotEvent;         // Item Slot Click 이벤트
+
+    public static ClearWindowManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private ClearWindowManager() { }
+
     private void Reset()
     {
         playerStatUI = transform.FindChild<PlayerStatUI>("PlayerStatWindow");
+        advisorStatUI = transform.FindChild<AdvisorStatUI>("AdvisorStatWindow");
+        itemInfoUI = transform.FindChild<ItemInfoUI>("ItemInfoWindow");
     }
 
     private void Start()
     {
         // Player Stat Attribute를 가져와서 LocalIndex로 정렬하여 리스트화
         Player player = GameManager.Instance.Player;
+
+        if (GameManager.Instance.Player == null) Debug.Log("플레이어가 존재 X");
+        if (GameManager.Instance.Player.Stat == null) Debug.Log("Stat 컴포넌트 존재 X");
         playerAttributes = GameManager.Instance.Player.Stat.AttributeDict.Values.OrderBy(attribute => attribute.LocalIndex).ToList();
 
         UpdateStatUI();
@@ -32,17 +58,17 @@ public class ClearWindowManager : MonoBehaviour
         playerStatUI.SetWindow(false);
     }
 
+    public void ResetAllInfoUI()
+    {
+        playerStatUI.SetWindow(false);
+        advisorStatUI.SetWindow(false);
+        itemInfoUI.SetWindow(false);
+    }
+
     private void UpdateStatUI()
     {
         // 모든 StatUI 갱신
         if (OnPlayerStatChange == null) { Debug.Log("등록된 이벤트가 없음!"); return; }
         OnPlayerStatChange.Invoke(playerAttributes);
-    }
-
-    public void OnOpenWindow()
-    {
-        playerAttributes[0].SetValue(200);
-        OnPlayerStatChange.Invoke(playerAttributes);
-        //playerStatUI.gameObject.SetActive(true);
     }
 }
