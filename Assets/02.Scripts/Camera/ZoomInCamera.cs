@@ -5,24 +5,25 @@ using Cinemachine;
 public class ZoomInCamera : MonoBehaviour
 {
     private CinemachineVirtualCamera cam;
+    private CinemachineFramingTransposer transposer;
     private float startCam = 30f;
     private float endCam = 6f;
     private float coolTime = 2f;
 
-    private Transform camTr;
-    private float startY = 30f;
-    private float endY = 0f;
+
     void Start()
     {
         cam = GetComponent<CinemachineVirtualCamera>();
-        camTr = GetComponent<Transform>();
-        camTr.localPosition = new Vector3(camTr.localPosition.x, startY, camTr.localPosition.z);
+        transposer = cam.AddCinemachineComponent<CinemachineFramingTransposer>();
         StartCoroutine(ZoomIn());
         
+
     }
 
     IEnumerator ZoomIn()
     {
+        
+        
         float timer = 0f;
         while (timer < coolTime)
         {
@@ -30,13 +31,11 @@ public class ZoomInCamera : MonoBehaviour
             float t = timer / coolTime;
             cam.m_Lens.OrthographicSize = Mathf.Lerp(startCam, endCam, t);
 
-            float newY = Mathf.Lerp(startY, endY, t);
-            camTr.localPosition = new Vector3(camTr.localPosition.x, newY, camTr.localPosition.z);
+            transposer.m_ScreenY = Mathf.Lerp(0.9f, 0.5f, t);
 
 
             yield return null;
         }
         cam.m_Lens.OrthographicSize = endCam;
-        camTr.localPosition = new Vector3(camTr.localPosition.x, endY, camTr.localPosition.z);
     }
 }
