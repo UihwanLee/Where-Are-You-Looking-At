@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de854a2777a2c8d4a877141a82fe66ec, type: 3}
-  m_Name: NewAdvice
+  m_Name: Advice_Player_Health
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 0
-  <Name>k__BackingField: 
-  <Desc>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
-  <EN>k__BackingField: 
-  <Value>k__BackingField: 
+  <Name>k__BackingField: "\uCCB4\uB825 \uC99D\uAC00"
+  <Desc>k__BackingField: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uB300 \uCCB4\uB825\uC774
+    \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  <Icon>k__BackingField: {fileID: 21300000, guid: 21cdb7d592848304780bf450179ee472, type: 3}
+  <EN>k__BackingField: EN_001
+  <Value>k__BackingField: 10
   <TargetType>k__BackingField: 0
