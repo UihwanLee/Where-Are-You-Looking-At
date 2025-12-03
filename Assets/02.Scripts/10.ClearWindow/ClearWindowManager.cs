@@ -62,6 +62,7 @@ public class ClearWindowManager : MonoBehaviour
         playerAttributes = GameManager.Instance.Player.Stat.AttributeDict.Values.OrderBy(attribute => attribute.LocalIndex).ToList();
 
         UpdateStatUI();
+        SetPlayerStatUI();
     }
 
     public void ResetAllInfoUI()

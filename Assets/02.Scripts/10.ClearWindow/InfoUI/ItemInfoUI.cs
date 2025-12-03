@@ -49,7 +49,6 @@ public class ItemInfoUI : MonoBehaviour
 
     public void UpdateInfoUI(ISellable item)
     {
-        Debug.Log("Item Invoke");
 
         if (item == null) return;
 
