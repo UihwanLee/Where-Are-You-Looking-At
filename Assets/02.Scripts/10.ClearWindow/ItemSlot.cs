@@ -8,28 +8,29 @@ using static UnityEditor.Progress;
 
 public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("컴포넌트 UI")]
-    [SerializeField] private Button btn;
-    [SerializeField] private Image highlight;
-    [SerializeField] private Image icon;
+    [Header("UI 컴포넌트")]
+    [SerializeField] protected Button btn;
+    [SerializeField] protected Image highlight;
+    [SerializeField] protected Image icon;
 
     // 아이템 슬롯에 넣을 Item 정보
     [Header("아이템 정보")]
     public ISellable item;
 
-    private int index;
+    protected int index;
+    protected bool isLock;
 
-    private bool isPurchase = false;
-    private ISlotable manager;
+    protected bool isPurchase = false;
+    protected ISlotable manager;
 
-    private void Reset()
+    public virtual void Reset()
     {
         btn = transform.FindChild<Button>("ItemSlot");
         highlight = transform.FindChild<Image>("Highlight");
         icon = transform.FindChild<Image>("ItemIcon");
     }
 
-    public void SetManager(ISlotable manager)
+    public virtual void SetManager(ISlotable manager)
     {
         this.manager = manager;
     }
@@ -39,7 +40,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         this.index = index;
     }
 
-    public void SetButton(Action<ItemSlot> onClickEvent)
+    public virtual void SetButton(Action<ItemSlot> onClickEvent)
     {
         // Button OnClick 등록
         btn.onClick.RemoveAllListeners();
@@ -63,7 +64,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         highlight.gameObject.SetActive(false);
     }
 
-    public void ResetSlot()
+    public virtual void ResetSlot()
     {
         highlight.gameObject.SetActive(false);
         this.icon.sprite = null;
@@ -112,7 +113,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         DragSlot.instance.dragSlot = null;
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         if (manager.GetSlotTpye() == SlotType.Shop) return;
 
@@ -143,7 +144,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (DragSlot.instance.dragSlot != null)
         {
@@ -154,7 +155,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         if (DragSlot.instance.dragSlot != null)
         {
@@ -168,6 +169,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public ISellable Item { get { return item; } }
     public bool IsPurchase { get { return isPurchase; } }
+    public bool IsLock {  get { return isLock; } }
 
     #endregion
 }

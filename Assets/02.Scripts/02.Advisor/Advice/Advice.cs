@@ -23,14 +23,14 @@ public abstract class Advice : ISellable
         return data.Desc;
     }
 
-    string ISellable.GetType()
-    {
-        return "Advice";
-    }
-
     public Sprite GetSpriteIcon()
     {
         return data.Icon;
+    }
+
+    SellItemType ISellable.GetType()
+    {
+        return SellItemType.Advice;
     }
 
     #region 프로퍼티

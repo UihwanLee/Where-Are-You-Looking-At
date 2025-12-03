@@ -1,9 +1,15 @@
 using UnityEngine;
 
+public enum SellItemType
+{
+    Advice,
+    Advisor,
+}
+
 public interface ISellable
 {
     string GetName();
     string GetDescription();
-    string GetType();
+    SellItemType GetType();
     Sprite GetSpriteIcon();
 }

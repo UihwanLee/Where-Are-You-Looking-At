@@ -57,7 +57,7 @@ public class ItemInfoUI : MonoBehaviour
 
         itemIcon.sprite = item.GetSpriteIcon();
         itemNameTxt.text = item.GetName();
-        itemTypeTxt.text = item.GetType();
+        itemTypeTxt.text = item.GetType().ToString();
         itemDescTxt.text = item.GetDescription();
     }
 }
