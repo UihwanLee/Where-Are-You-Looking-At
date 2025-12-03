@@ -29,7 +29,7 @@ public class PlayerStatUI : MonoBehaviour
     {
         if (clearWindowManager != null)
         {
-            Debug.Log("PlayerStat -> OnPlayerStatChange 이벤트 등록");
+            Debug.Log("등록: PlayerStat -> OnPlayerStatChange 이벤트");
             clearWindowManager.OnPlayerStatChange += UpdateStatUI;
         }
     }
@@ -37,7 +37,10 @@ public class PlayerStatUI : MonoBehaviour
     private void OnDisable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("해제: PlayerStat -> OnPlayerStatChange 이벤트");
             clearWindowManager.OnPlayerStatChange -= UpdateStatUI;
+        }
     }
 
     public void SetWindow(bool active)
