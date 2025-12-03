@@ -6,9 +6,10 @@ public class MonsterSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
     [SerializeField] private float spawnInterval = 3f;
-    [SerializeField] private float spawnRadius = 8f;
+    //[SerializeField] private float spawnRadius = 8f;
     [SerializeField] private int spawnCountPerInterval = 3;
     [SerializeField] private int maxMonsters = 30;
+    [SerializeField] private Rect spawnArea;
 
     [Header("Monster Prefab")]
     [SerializeField] GameObject monsterPrefab;
@@ -17,10 +18,12 @@ public class MonsterSpawner : MonoBehaviour
 
     private readonly List<GameObject> activeMonsters = new List<GameObject>();
 
+    private Coroutine currentSpawnRoutine;
+
     private void Reset()
     {
         spawnInterval = 3f;
-        spawnRadius = 8f;
+        //spawnRadius = 8f;
         spawnCountPerInterval = 3;
         maxMonsters = 30;
     }
@@ -35,7 +38,7 @@ public class MonsterSpawner : MonoBehaviour
 
     public void StartSpawn()
     {
-        StartCoroutine(SpawnRoutine());
+        currentSpawnRoutine = StartCoroutine(SpawnRoutine());
     }
 
     private IEnumerator SpawnRoutine()
@@ -58,8 +61,12 @@ public class MonsterSpawner : MonoBehaviour
 
     private void SpawnMonster()
     {
-        Vector2 randomDir = Random.insideUnitCircle.normalized;
-        Vector2 spawnPos = (Vector2)player.transform.position + randomDir * spawnRadius;
+        if (monsterPrefab == null || spawnArea == null) return;
+
+        //Vector2 randomDir = Random.insideUnitCircle.normalized;
+        //Vector2 spawnPos = (Vector2)player.transform.position + randomDir * spawnRadius;
+
+        Vector2 spawnPos = new Vector2(Random.Range(spawnArea.xMin, spawnArea.xMax), Random.Range(spawnArea.yMin, spawnArea.yMax));
 
         GameObject monster = PoolManager.Instance.GetObject("Monster");
 
@@ -76,5 +83,29 @@ public class MonsterSpawner : MonoBehaviour
     public void RemoveActiveMonster(GameObject monster)
     {
         activeMonsters.Remove(monster);
+    }
+
+    public void ClearActiveMonster()
+    {
+        StopCoroutine(currentSpawnRoutine);
+
+        foreach (GameObject monster in activeMonsters)
+        {
+            PoolManager.Instance.ReleaseObject("Monster", monster);
+        }
+
+        activeMonsters.Clear();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (spawnArea == null) return;
+
+        Gizmos.color = Color.magenta;
+
+        Vector3 center = new Vector3(spawnArea.x + spawnArea.width / 2, spawnArea.y + spawnArea.height / 2);
+        Vector3 size = new Vector3(spawnArea.width, spawnArea.height);
+
+        Gizmos.DrawCube(center, size);
     }
 }
