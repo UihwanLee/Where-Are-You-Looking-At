@@ -18,6 +18,8 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private Image highlight;
     [SerializeField] private Image icon;
 
+    private bool isPurchase = false;
+
     private void Reset()
     {
         btn = transform.FindChild<Button>("ItemSlot");
@@ -39,6 +41,7 @@ public class ItemSlot : MonoBehaviour
     {
         this.item = item;
         this.icon.sprite = item.GetSpriteIcon();
+        this.isPurchase = false;
 
         ResetSlot();
     }
@@ -53,9 +56,18 @@ public class ItemSlot : MonoBehaviour
         highlight.gameObject.SetActive(false);
     }
 
+    public void Purchase()
+    {
+        isPurchase = true;
+        this.icon.sprite = null;
+        this.item = null;
+        highlight.gameObject.SetActive(false);
+    }
+
     #region 프로퍼티 
 
     public ISellable Item { get { return item; } }
+    public bool IsPurchase { get { return isPurchase; } }
 
     #endregion
 }

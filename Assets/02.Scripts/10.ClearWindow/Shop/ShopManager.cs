@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -25,7 +26,11 @@ public class ShopManager : MonoBehaviour
 
     // 인터페이스로 상품에 판매할 리스트 묶기
     [Header("상품 리스트")]
-    [SerializeField] private List<ISellable> productList = new List<ISellable>();
+    [SerializeField] private List<ItemSlot> productList = new List<ItemSlot>();
+
+    [Header("버튼 컴포넌트")]
+    [SerializeField] private Button rerollBtn;
+    [SerializeField] private Button purchaseBtn;
 
     private ItemSlot currentSlot;
     private ClearWindowManager clearWindowManager;
@@ -39,7 +44,18 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         clearWindowManager = ClearWindowManager.Instance;
+
+        SetRerollBtn();
+        SetPurchaseBtn();
     }
+
+    private void Reset()
+    {
+        rerollBtn = transform.FindChild<Button>("Btn_Reroll");
+        purchaseBtn = transform.FindChild<Button>("Btn_Purchase");
+    }
+
+    #region 상품 리스트 설정
 
     private void GenerateAdvice()
     {
@@ -79,11 +95,21 @@ public class ShopManager : MonoBehaviour
 
             // ProductSlot 초기화
             slot.Initialize(randomItem, OnClickSlot);
+
+            // ProductList에 추가
+            productList.Add(slot);
         }
     }
 
+    #endregion
+
+    #region 상품 클릭
+
     public void OnClickSlot(ItemSlot slot)
     {
+        // 이미 구매한 상품이면 return
+        if (slot.IsPurchase) return;
+
         if(currentSlot != null)
         {
             currentSlot.ResetSlot();
@@ -106,4 +132,69 @@ public class ShopManager : MonoBehaviour
             clearWindowManager.OnClickItemSlotEvent?.Invoke(currentSlot.Item);
         }
     }
+
+    #endregion
+
+    #region 상품 리롤
+
+    private void SetRerollBtn()
+    {
+        if (rerollBtn == null) return;
+
+        rerollBtn.onClick.RemoveAllListeners();
+        rerollBtn.onClick.AddListener(() => OnClickRerollBtn());
+    }
+
+    private void OnClickRerollBtn()
+    {
+        // 현재 선택한 슬롯 정보 초기화
+        clearWindowManager.SetPlayerStatUI();
+        if (currentSlot != null)
+        {
+            currentSlot.ResetSlot();
+            currentSlot = null;
+        }
+
+        foreach(var product in productList)
+        {
+            ISellable randomItem = itemList[Random.Range(0, itemList.Count)];
+            product.Set(randomItem);
+        }
+    }
+
+    #endregion
+
+    #region 상품 구매
+
+    private void SetPurchaseBtn()
+    {
+        if(purchaseBtn == null) return;
+
+        purchaseBtn.onClick.RemoveAllListeners();
+        purchaseBtn.onClick.AddListener(() => TryPurchase());
+    }
+
+    private void TryPurchase()
+    {
+        Purcahse();
+    }
+
+    private void Purcahse()
+    {
+        if(currentSlot == null) return;
+
+        // 인벤토리에 아이템 넣기
+
+        // money 정보 갱신
+
+
+        // 슬롯 구매 정보 전달
+        currentSlot.Purchase();
+
+        // 슬롯 초기화
+        currentSlot = null;
+        clearWindowManager.SetPlayerStatUI();
+    }
+
+    #endregion
 }
