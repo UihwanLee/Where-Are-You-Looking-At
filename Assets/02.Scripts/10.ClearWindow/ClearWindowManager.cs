@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClearWindowManager : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class ClearWindowManager : MonoBehaviour
     [SerializeField] private List<Attribute> playerAttributes = new List<Attribute>();
     [SerializeField] private List<Attribute> advisorAttributes = new List<Attribute>();
 
-    public event Action<List<Attribute>> OnPlayerStatChange;    // 플레이어 Stat Change 이벤트
-    public event Action<List<Attribute>> OnAdvisorStatChange;   // Advisor Stat Chnage 이벤트
+    public Action<List<Attribute>> OnPlayerStatChange;    // 플레이어 Stat Change 이벤트
+    public Action<List<Attribute>> OnAdvisorStatChange;   // Advisor Stat Chnage 이벤트
 
-    public event Action<ISellable> OnClickItemSlotEvent;         // Item Slot Click 이벤트
+    public Action<ISellable> OnClickItemSlotEvent;         // Item Slot Click 이벤트
 
     public static ClearWindowManager Instance { get; private set; }
 
@@ -27,7 +28,7 @@ public class ClearWindowManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(Instance);
         }
         else
         {
@@ -54,13 +55,18 @@ public class ClearWindowManager : MonoBehaviour
         playerAttributes = GameManager.Instance.Player.Stat.AttributeDict.Values.OrderBy(attribute => attribute.LocalIndex).ToList();
 
         UpdateStatUI();
-
-        playerStatUI.SetWindow(false);
     }
 
     public void ResetAllInfoUI()
     {
         playerStatUI.SetWindow(false);
+        advisorStatUI.SetWindow(false);
+        itemInfoUI.SetWindow(false);
+    }
+
+    public void SetPlayerStatUI()
+    {
+        playerStatUI.SetWindow(true);
         advisorStatUI.SetWindow(false);
         itemInfoUI.SetWindow(false);
     }
