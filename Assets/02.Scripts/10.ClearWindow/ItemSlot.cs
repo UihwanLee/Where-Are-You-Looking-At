@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("컴포넌트 UI")]
     [SerializeField] private Button btn;
@@ -76,6 +76,8 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         ResetSlot();
     }
 
+    #region 마우스 포인터 관련 로직
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (item != null && manager.GetSlotTpye() != SlotType.Shop)
@@ -140,6 +142,27 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             sourceSlot.ResetSlot();
         }
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (DragSlot.instance.dragSlot != null)
+        {
+            if (DragSlot.instance.dragSlot != this)
+            {
+                Click();
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (DragSlot.instance.dragSlot != null)
+        {
+            UnClick();
+        }
+    }
+
+    #endregion
 
     #region 프로퍼티 
 
