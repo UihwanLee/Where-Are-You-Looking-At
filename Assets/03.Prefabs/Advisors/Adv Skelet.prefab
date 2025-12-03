@@ -134,9 +134,8 @@ MonoBehaviour:
   stat: {fileID: -2867601505417159455}
   targetMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   projectilePrefab: {fileID: 5742274800780468432, guid: 899e59d25e55d03488a321fd17f2f96a, type: 3}
-  attackSpeed: 1
   firePoint: {fileID: 8763733838382920091}
   spriteRenderer: {fileID: 168581114926730691}
 --- !u!114 &-2867601505417159455

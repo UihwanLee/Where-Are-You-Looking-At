@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed;
+    [SerializeField] private float damage;
 
     private float lifeDistance;
     private Vector3 startPosition;
@@ -31,8 +33,10 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    public void Init(float lifeDistance)
+    public void Init(float range, float atk, bool isFlipY)
     {
-        this.lifeDistance = lifeDistance;
+        this.lifeDistance = range;
+        this.damage = atk;
+        spriteRenderer.flipY = isFlipY;
     }
 }

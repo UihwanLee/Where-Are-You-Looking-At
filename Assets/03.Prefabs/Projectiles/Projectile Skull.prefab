@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5742274800780468432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3826b1057f2b9564da83e8b5d14b6d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8957041177241913031}
   speed: 15
+  damage: 0
 --- !u!58 &-1993240674726900774
 CircleCollider2D:
   m_ObjectHideFlags: 0
