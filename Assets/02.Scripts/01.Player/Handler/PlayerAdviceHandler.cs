@@ -16,6 +16,7 @@ public class PlayerAdviceHandler : MonoBehaviour
         switch(advice.Data.EN)
         {
             case "EN_001":
+                Debug.Log(advice.Data.Value);
                 player.Stat.Add(AttributeType.MaxHp, advice.Data.Value);
                 break;
             case "EN_002":

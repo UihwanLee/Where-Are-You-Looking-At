@@ -241,6 +241,7 @@ public class InventoryManager : MonoBehaviour, ISlotable
         Player player = GameManager.Instance.Player;
         player.transform.position = new Vector3(25f, 1f);
         clearWindowManager.SetClearWindow(false);
+        MonsterSpawner.Instance.StartSpawn();
     }
 
     #endregion

@@ -4545,6 +4545,7 @@ GameObject:
   - component: {fileID: 6459923657155047776}
   - component: {fileID: 6948446056925801894}
   - component: {fileID: 2880515988828637212}
+  - component: {fileID: 6948446056925801895}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7925,14 +7926,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 3095916905793024875}
-  statTextListParent: {fileID: 702018815297549218}
+  statTextListParent: {fileID: 7592086951354595034}
   statTextList:
-  - {fileID: 7645820039350728556}
-  - {fileID: 4420984519495478442}
-  - {fileID: 7585306423143660998}
-  - {fileID: 3199178110228615555}
-  - {fileID: 4743408314429855485}
-  - {fileID: 3766359977513931958}
+  - {fileID: 7575980270405644983}
+  - {fileID: 5579389632390535155}
+  - {fileID: 6383373682132557367}
+  - {fileID: 7573003656807653848}
+  - {fileID: 3172279139077701798}
+  - {fileID: 7944851538412747818}
+  - {fileID: 6263772731552916784}
+  - {fileID: 6238677625036701205}
   clearWindowManager: {fileID: 6332172671413839634}
   playerAttributes: []
 --- !u!224 &5485997704655211246
@@ -13933,6 +13936,18 @@ MonoBehaviour:
   gold:
     _localIndex: 0
     _value: 0
+--- !u!114 &6948446056925801895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518500298022035621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3268afc79ae30469e59cccf585ce58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &6952175444983139560
 CanvasRenderer:
   m_ObjectHideFlags: 0

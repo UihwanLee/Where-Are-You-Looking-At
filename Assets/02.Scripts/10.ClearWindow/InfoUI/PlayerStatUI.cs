@@ -56,6 +56,8 @@ public class PlayerStatUI : MonoBehaviour
 
         if (playerAttributes.Count != statTextList.Count) return;
 
+        clearWindowManager.SetPlayerStatUI();
+
         for(int i=0; i< playerAttributes.Count; i++)
         {
             statTextList[i].text = playerAttributes[i].Value.ToString();

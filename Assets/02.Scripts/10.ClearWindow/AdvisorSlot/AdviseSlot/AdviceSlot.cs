@@ -62,6 +62,18 @@ public class AdviceSlot : ItemSlot
         }
 
         base.OnDrop(eventData);
+
+        if(item != null)
+        {
+            Player player = GameManager.Instance.Player;
+
+            Advice advice = item as Advice;
+
+            if (advice != null)
+            {
+                player.AdviceHandler.ApplyAdvice(advice);
+            }
+        }
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
