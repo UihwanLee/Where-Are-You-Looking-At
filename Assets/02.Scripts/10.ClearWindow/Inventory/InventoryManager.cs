@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, ISlotable
 {
     // 인벤토리 슬롯은 18개로 고정
     private int MAX_INVENTORY_SLOT = 18;
@@ -23,7 +23,7 @@ public class InventoryManager : MonoBehaviour
     private Button closeBtn;
 
     private ItemSlot currentSlot;
-    private int currentSlotIndex;
+    private int currentSlotCount;
     private ClearWindowManager clearWindowManager;
 
     private void Awake()
@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         clearWindowManager = ClearWindowManager.Instance;
-        currentSlotIndex = 0;
+        currentSlotCount = 0;
         currentSlot = null;
     }
 
@@ -76,6 +76,8 @@ public class InventoryManager : MonoBehaviour
             // InventorySlot 초기화
             slot.SetButton(OnClickSlot);
             slot.UnClick();
+            slot.SetIndex(index);
+            slot.SetManager(this);
 
             // InventoryList에 추가
             inventoryList.Add(slot);
@@ -89,7 +91,11 @@ public class InventoryManager : MonoBehaviour
     public void OnClickSlot(ItemSlot slot)
     {
         // 빈 슬롯이면 return
-        if (slot == null) return;
+        if (slot == null)
+        {
+            Debug.Log("slot이 Null입니다");
+            return;
+        }
 
         if (currentSlot != null)
         {
@@ -115,25 +121,36 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public SlotType GetSlotTpye()
+    {
+        return SlotType.Inventory;
+    }
+
     #endregion
 
     #region 인벤토리 아이템 추가/삭제
 
     public void AddItem(ISellable item)
     {
-        // 소지할 수 있는 개수를 넘었는지 체크
-        if (currentSlotIndex >= MAX_INVENTORY_SLOT-1 && currentSlotIndex < 0) return;
+        ItemSlot emptySlot = inventoryList.Find(slot => slot.Item == null);
 
-        // 인벤토리에 아이템 추가
-        inventoryList[currentSlotIndex].SetItem(item);
+        if (emptySlot != null)
+        {
+            // 비어있는 슬롯에 아이템 추가
+            emptySlot.SetItem(item);
 
-        // Slot Index 증가
-        currentSlotIndex++;
+            currentSlotCount++;
+        }
+        else
+        {
+            // 인벤토리가 가득 찬 경우
+            Debug.Log("인벤토리가 가득 찼습니다!");
+        }
     }
 
     public void DeleteItem(ISellable item)
     {
-        if (currentSlotIndex <= 0) return;
+        if (currentSlotCount <= 0) return;
 
         bool isFind = false;
 
@@ -148,7 +165,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Slot Index 감소
-        if (isFind) currentSlotIndex = Mathf.Max(currentSlotIndex - 1, 0);
+        if (isFind) currentSlotCount = Mathf.Max(currentSlotCount - 1, 0);
 
         // Inventory UI 갱신
         UpdateInventorySlot();
@@ -219,7 +236,7 @@ public class InventoryManager : MonoBehaviour
             slot.ResetSlot();
         }
 
-        currentSlotIndex = 0;
+        currentSlotCount = 0;
     }
 
     #endregion

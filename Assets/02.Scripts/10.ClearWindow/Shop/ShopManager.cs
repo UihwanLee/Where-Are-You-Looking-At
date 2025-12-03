@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoBehaviour, ISlotable
 {
     // 상품 슬롯은 8개로 고정
     private int MAX_PRDOUCT_SLOT = 8;
@@ -97,6 +97,7 @@ public class ShopManager : MonoBehaviour
             slot.SetItem(randomItem);
             slot.SetButton(OnClickSlot);
             slot.UnClick();
+            slot.SetManager(this);
 
             // ProductList에 추가
             productList.Add(slot);
@@ -133,6 +134,11 @@ public class ShopManager : MonoBehaviour
             // 아이템 정보 UI 갱신
             clearWindowManager.OnClickItemSlotEvent?.Invoke(currentSlot.Item);
         }
+    }
+
+    public SlotType GetSlotTpye()
+    {
+        return SlotType.Shop;
     }
 
     #endregion
