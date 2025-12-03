@@ -1,0 +1,61 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ItemSlot : MonoBehaviour
+{
+    // 상품 슬롯은 8개로 고정
+    private int MAX_PRDOUCT_SLOT = 8;
+
+    // 아이템 슬롯에 넣을 Item 정보
+    [Header("아이템 정보")]
+    [SerializeField] private ISellable item;
+
+    [Header("컴포넌트 UI")]
+    [SerializeField] private Button btn;
+    [SerializeField] private Image highlight;
+    [SerializeField] private Image icon;
+
+    private void Reset()
+    {
+        btn = transform.FindChild<Button>("ItemSlot");
+        highlight = transform.FindChild<Image>("Highlight");
+        icon = transform.FindChild<Image>("ItemIcon");
+    }
+
+    public void Initialize(ISellable item, Action<ItemSlot> onClickEvent)
+    {
+        // 슬롯 세팅
+        Set(item);
+
+        // Button OnClick 등록
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(() => onClickEvent(this));
+    }
+
+    public void Set(ISellable item)
+    {
+        this.item = item;
+        this.icon.sprite = item.GetSpriteIcon();
+
+        ResetSlot();
+    }
+
+    public void Click()
+    {
+        highlight.gameObject.SetActive(true);
+    }
+
+    public void ResetSlot()
+    {
+        highlight.gameObject.SetActive(false);
+    }
+
+    #region 프로퍼티 
+
+    public ISellable Item { get { return item; } }
+
+    #endregion
+}
