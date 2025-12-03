@@ -32,4 +32,25 @@ public class PlayerAdviceHandler : MonoBehaviour
         // Stat UI 갱신
         ClearWindowManager.Instance.OnPlayerStatChange?.Invoke();
     }
+
+    public void RemoveAdvice(Advice advice)
+    {
+        switch (advice.Data.EN)
+        {
+            case "EN_001":
+                player.Stat.Sub(AttributeType.MaxHp, advice.Data.Value);
+                break;
+            case "EN_002":
+                player.Stat.Sub(AttributeType.Speed, advice.Data.Value);
+                break;
+            case "EN_003":
+                player.Stat.Sub(AttributeType.ReproductionHp, advice.Data.Value);
+                break;
+            default:
+                break;
+        }
+
+        // Stat UI 갱신
+        ClearWindowManager.Instance.OnPlayerStatChange?.Invoke();
+    }
 }

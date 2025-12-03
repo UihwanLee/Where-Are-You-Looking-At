@@ -63,6 +63,13 @@ public class AdviceSlot : ItemSlot
 
         base.OnDrop(eventData);
 
+        if(DragSlot.instance.dragSlot.Manager.GetSlotTpye() == Manager.GetSlotTpye())
+        {
+            // 같은 슬롯 영역에서 옮기면 return
+            ClearWindowManager.Instance.SetPlayerStatUI();
+            return;
+        }
+
         if(item != null)
         {
             Player player = GameManager.Instance.Player;

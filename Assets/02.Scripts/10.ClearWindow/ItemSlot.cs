@@ -47,6 +47,11 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         btn.onClick.AddListener(() => onClickEvent(this));
     }
 
+    public void SetIcon(Sprite icon)
+    {
+        this.icon.sprite = icon;
+    }
+
     public void SetItem(ISellable item)
     {
         this.item = item;
@@ -117,9 +122,38 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (manager.GetSlotTpye() == SlotType.Shop) return;
 
+        // 인벤토리 슬롯에 Advice를 놓으면 미적용
+        bool isChange = false;
+        if(DragSlot.instance.dragSlot != null)
+        {
+            ISellable item = DragSlot.instance.dragSlot.item;
+            if (item != null)
+            {
+                Player player = GameManager.Instance.Player;
+
+                Advice advice = item as Advice;
+
+                if (advice != null && manager.GetSlotTpye() == SlotType.Inventory)
+                {
+                    // Advice 슬롯 -> 인벤토리 슬롯 옮길 때 
+                    Debug.Log(DragSlot.instance.dragSlot.Manager.GetSlotTpye() + " -> " + manager.GetSlotTpye());
+                    if (DragSlot.instance.dragSlot.Manager.GetSlotTpye() == SlotType.Advisor)
+                    {
+                        isChange = true;
+                        player.AdviceHandler.RemoveAdvice(advice);
+                    }
+                }
+            }
+        }
+
         if (DragSlot.instance.dragSlot != null)
         {
             ChangeSlot();
+        }
+
+        if(isChange)
+        {
+            ClearWindowManager.Instance.SetPlayerStatUI();
         }
     }
 
@@ -170,6 +204,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public ISellable Item { get { return item; } }
     public bool IsPurchase { get { return isPurchase; } }
     public bool IsLock {  get { return isLock; } }
+    public ISlotable Manager { get { return manager; } }
 
     #endregion
 }

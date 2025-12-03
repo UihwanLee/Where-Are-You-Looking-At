@@ -8,6 +8,7 @@ public class AdvisorSlotManager : MonoBehaviour, ISlotable
     [Header("Test용")]
     [SerializeField] private Sprite icon_unLock;
     [SerializeField] private Sprite icon_lock;
+    [SerializeField] private Sprite icon_advisor;
 
     [Header("조언자 슬롯")]
     [SerializeField] private List<AdvisorSlot> advisorSlots = new List<AdvisorSlot>();
@@ -47,6 +48,9 @@ public class AdvisorSlotManager : MonoBehaviour, ISlotable
             advisorSlots[i].SetButton(OnClickSlot);
         }
         advisorSlots[0].UnLock(icon_unLock);
+        advisorSlots[1].UnLock(icon_unLock);
+        advisorSlots[0].SetIcon(icon_advisor);
+        advisorSlots[1].SetIcon(icon_advisor);
     }
 
 
