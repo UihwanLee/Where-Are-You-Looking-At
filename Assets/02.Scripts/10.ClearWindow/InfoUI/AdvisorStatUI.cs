@@ -8,16 +8,21 @@ public class AdvisorStatUI : MonoBehaviour
 {
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject statTextListParent;
-    [SerializeField] private ClearWindowManager clearWindowManager;
     [SerializeField] private Image advisorIcon;
     [SerializeField] private Text advisorName;
     [SerializeField] private Text advisorSlot;
     [SerializeField] private List<Text> statTextList = new List<Text>();
 
+    private ClearWindowManager clearWindowManager;
+
+    private void Start()
+    {
+        clearWindowManager = ClearWindowManager.Instance;
+    }
+
     private void Reset()
     {
         window = transform.GetChild(0).gameObject;
-        clearWindowManager = transform.FindParent<ClearWindowManager>("ClearWindow");
         advisorIcon = transform.FindChild<Image>("Advisor_Icon");
         advisorName = transform.FindChild<Text>("Advisor_Name");
         advisorSlot = transform.FindChild<Text>("Advisor_Slot");
