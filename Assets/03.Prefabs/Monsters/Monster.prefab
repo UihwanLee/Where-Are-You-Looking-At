@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3628532039914464167}
   - component: {fileID: 7700011446097912708}
+  - component: {fileID: 3439166195723142625}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3439166195723142625
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879681429719062666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 686b2ff18043d8546930b19ee84ca574, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9109398306441970260
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,12 +245,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c9db0d440d1bede47a47ad787691988e, type: 2}
   maxHp:
+    _localIndex: 0
     _value: 0
   speed:
+    _localIndex: 0
     _value: 0
   atk:
+    _localIndex: 0
     _value: 0
   spawnSpeed:
+    _localIndex: 0
     _value: 0
 --- !u!114 &2419734847157984027
 MonoBehaviour:
@@ -243,6 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp:
+    _localIndex: 0
     _value: 0
   hp:
+    _localIndex: 0
     _value: 0
