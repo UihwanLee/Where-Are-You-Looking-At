@@ -19,6 +19,8 @@ public class Anomaly : MonoBehaviour
 
     private void Start()
     {
+        playerLight = GameObject.Find("Light").GetComponent<Light2D>();
+        globalLight = GameObject.Find("Global Light 2D").GetComponent<Light2D>();
         ResetAnomaly();// 처음시작시 셋팅
     }
 
@@ -41,7 +43,7 @@ public class Anomaly : MonoBehaviour
         switch (random)
         {
             case 0:
-                playerLight.pointLightOuterRadius = 3f;
+                playerLight.pointLightOuterRadius = 50;
                 break;
 
             case 1:
@@ -50,6 +52,7 @@ public class Anomaly : MonoBehaviour
 
             case 2:
                 globalLight.intensity = 0f;
+                playerLight.pointLightOuterRadius = 3f;
                 break;
 
             case 3:
@@ -60,8 +63,8 @@ public class Anomaly : MonoBehaviour
     }
     private void ResetAnomaly()//초기화 처음 상태 유지
     {
-        playerLight.pointLightOuterRadius = 10f;
-        globalLight.intensity = 0.3f;
+        playerLight.pointLightOuterRadius = 8f;
+        globalLight.intensity = 0.1f;
         foreach (var obj in objects)
         {
             obj.GetComponent<SpriteRenderer>().sprite = baseSprite;
