@@ -89,10 +89,21 @@ public class ShopManager : MonoBehaviour
             currentSlot.ResetSlot();
         }
 
-        currentSlot = slot;
-        currentSlot.Click();
+        if(currentSlot == slot)
+        {
+            // 이미 선택한 슬롯이었다면 초기화
+            currentSlot.ResetSlot();
+            clearWindowManager.SetPlayerStatUI();
+            currentSlot = null;
+        }
+        else
+        {
+            // 아니면 버튼 클릭
+            currentSlot = slot;
+            currentSlot.Click();
 
-        // 아이템 정보 UI 갱신
-        //clearWindowManager.OnClickItemSlotEvent?.Invoke(slot.Item);
+            // 아이템 정보 UI 갱신
+            clearWindowManager.OnClickItemSlotEvent?.Invoke(currentSlot.Item);
+        }
     }
 }
