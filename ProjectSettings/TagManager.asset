@@ -12,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - Player_Body
+  - Player_Hit
   - Enemy
-  - 
   - 
   - 
   - 

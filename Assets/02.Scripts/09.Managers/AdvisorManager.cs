@@ -9,7 +9,7 @@ public enum AdvisorType
 
 public class AdvisorManager : MonoBehaviour
 {
-    [field:SerializeField] private List<GameObject> advisorPrefabs = new List<GameObject>();
+    [field: SerializeField] private List<GameObject> advisorPrefabs = new List<GameObject>();
 
     private Vector3[] advisorPivots = new Vector3[6];
 
@@ -31,6 +31,8 @@ public class AdvisorManager : MonoBehaviour
 
     public void AddAdvisors()
     {
+        if (currentAdvisorIndex >= advisorPivots.Length) return;
+
         GameObject go = Instantiate(advisorPrefabs[0], transform);
         go.transform.localPosition += advisorPivots[currentAdvisorIndex];
         currentAdvisorIndex++;
@@ -45,10 +47,7 @@ public class AdvisorManager : MonoBehaviour
             float angle = angleStep * i;
             float rad = angle * Mathf.Deg2Rad;
 
-            Vector2 pos = new Vector2(
-                /*transform.position.x + */Mathf.Cos(rad) * radius,
-                /*transform.position.y + */Mathf.Sin(rad) * radius
-                );
+            Vector2 pos = new Vector2(Mathf.Cos(rad) * radius, Mathf.Sin(rad) * radius);
 
             advisorPivots[i] = pos;
         }

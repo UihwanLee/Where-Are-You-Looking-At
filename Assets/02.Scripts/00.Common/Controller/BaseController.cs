@@ -12,7 +12,7 @@ public class BaseController : MonoBehaviour
     [Header("Status")]
     protected float moveSpeed = 5f;
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Movement();
         Flip();
