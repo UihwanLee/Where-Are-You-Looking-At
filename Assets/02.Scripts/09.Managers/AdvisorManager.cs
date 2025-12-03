@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AdvisorType
-{
-    Projectile
-}
-
 public class AdvisorManager : MonoBehaviour
 {
     const int MaxAdvisorCount = 6;
@@ -36,14 +31,14 @@ public class AdvisorManager : MonoBehaviour
     {
         if (currentAdvisorIndex >= MaxAdvisorCount) return;
 
-        // 1. Á¶¾ðÀÚ »ý¼º
+        // 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameObject go = Instantiate(advisorPrefabs[0], transform);
         activeAdvisor[currentAdvisorIndex] = go;
         currentAdvisorIndex++;
 
         ArrangementPivots();
 
-        // 2. Á¶¾ðÀÚ À§Ä¡ Àç¹èÄ¡
+        // 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ä¡
         for (int i = 0; i < activeAdvisor.Length; i++)
         {
             if (activeAdvisor[i] == null) continue;

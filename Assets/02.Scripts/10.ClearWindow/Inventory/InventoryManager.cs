@@ -237,6 +237,10 @@ public class InventoryManager : MonoBehaviour, ISlotable
         }
 
         currentSlotCount = 0;
+
+        Player player = GameManager.Instance.Player;
+        player.transform.position = new Vector3(25f, 1f);
+        clearWindowManager.SetClearWindow(false);
     }
 
     #endregion

@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class ClearWindowManager : MonoBehaviour
 {
+    [SerializeField] private GameObject window;
+
     [Header("Stat 정보")]
     [SerializeField] private PlayerStatUI playerStatUI;
     [SerializeField] private AdvisorStatUI advisorStatUI;
@@ -52,6 +54,12 @@ public class ClearWindowManager : MonoBehaviour
     {
         UpdateStatUI();
         SetPlayerStatUI();
+        SetClearWindow(false);
+    }
+
+    public void SetClearWindow(bool actvie)
+    {
+        window.SetActive(actvie);
     }
 
     public void ResetAllInfoUI()

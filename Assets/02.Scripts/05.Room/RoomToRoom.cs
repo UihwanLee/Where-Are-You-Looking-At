@@ -12,20 +12,22 @@ public class RoomToRoom : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!anomaly.isAnomaly && collision.IsTouching(topEntranceCollider) || anomaly.isAnomaly && collision.IsTouching(bottomEntranceCollider))//ÀÌ»óÇö»ó ¾ø°í À§·Î, ÀÌ»óÇö»ó ÀÖ°í ¾Æ·¡·Î [Á¤´äÃ³¸®]
+            if (!anomaly.isAnomaly && collision.IsTouching(topEntranceCollider) || anomaly.isAnomaly && collision.IsTouching(bottomEntranceCollider))//ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ [ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½]
             {
                 roomNumber++;
-                Debug.Log("Á¤´ä");//Ã¼Å©¿Ï
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½");//Ã¼Å©ï¿½ï¿½
             }
-            else //[¿À´ä Ã³¸®]
+            else //[ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½]
             {
                 roomNumber = 0;
-                Debug.Log("¿À´ä");//Ã¼Å©¿Ï
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½");//Ã¼Å©ï¿½ï¿½
             }
-            //¸ó½ºÅÍ ÃÊ±âÈ­
-            anomaly.initAnomaly();//¸®¼Â ÈÄ ÃÊ±âÈ­
-            collision.transform.position = new Vector3(25f, 1f);
-            roomNumbertxt.text = $"{roomNumber}";
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+            anomaly.initAnomaly();//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
+            ClearWindowManager.Instance.SetClearWindow(true);
+            Player player = GameManager.Instance.Player;
+            player.transform.position = new Vector3(100f, 100f);
+            //roomNumbertxt.text = $"{roomNumber}";
         }
     }
 }
