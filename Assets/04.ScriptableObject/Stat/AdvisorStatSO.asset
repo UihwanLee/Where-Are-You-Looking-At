@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Atk>k__BackingField: 10
   <AttackSpeed>k__BackingField: 1
-  <AttackRange>k__BackingField: 100
+  <AttackRange>k__BackingField: 5
   <CritChance>k__BackingField: 0
   <CritMultiplier>k__BackingField: 0
   <ProjectileSpeed>k__BackingField: 10

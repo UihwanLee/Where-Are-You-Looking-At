@@ -39,4 +39,10 @@ public class BaseAdvisorController : MonoBehaviour
         currentTarget = nearestTarget;
         return true;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, stat.AttackRange);
+    }
 }

@@ -20,7 +20,7 @@ public class ProjectileController : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        float moveDistance = (startPosition - transform.position).sqrMagnitude;
+        float moveDistance = (startPosition - transform.position).magnitude;
         if (moveDistance > lifeDistance)
             Destroy(gameObject);
     }

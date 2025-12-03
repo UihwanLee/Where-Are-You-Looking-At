@@ -7,12 +7,20 @@ public class Player : MonoBehaviour
     public PlayerStat Stat { get; private set; }
     public PlayerController Controller {  get; private set; }
     public PlayerCondition Condition {  get; private set; }
-
+    public AdvisorManager AdvisorManager { get; private set; }
 
     private void Awake()
     {
         Stat = GetComponent<PlayerStat>();
         Controller = GetComponent<PlayerController>();
         Condition = GetComponent<PlayerCondition>();
+
+        AdvisorManager = GetComponentInChildren<AdvisorManager>();
+    }
+
+    private void Start()
+    {
+        AdvisorManager.AddAdvisors();
+        AdvisorManager.AddAdvisors();
     }
 }

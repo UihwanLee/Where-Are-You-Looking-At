@@ -45,6 +45,6 @@ public class ProjectileAdvisorController : BaseAdvisorController
     {
         GameObject go = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         ProjectileController proj = go.GetComponent<ProjectileController>();
-        proj.Init(range:stat.AttackRange, atk:stat.Atk, isFlipY:spriteRenderer.flipY);
+        proj.Init(range: stat.AttackRange, atk: stat.Atk, isFlipY: spriteRenderer.flipY);
     }
 }

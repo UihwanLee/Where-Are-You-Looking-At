@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FloatingText
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\uB370\uBBF8\uC9C0"
-  <Type>k__BackingField: 0
+  <Type>k__BackingField: 3
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 0}
   <Duration>k__BackingField: 1
   <FloaingDist>k__BackingField: 2
