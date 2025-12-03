@@ -83,14 +83,14 @@ public class PlayerStat : MonoBehaviour
 
     private void Initialize()
     {
-        maxHp = new Attribute(data.MaxHp);
-        speed = new Attribute(data.Speed);
-        reproductionHp = new Attribute(data.ReproductionHp);
-        recoveryHp = new Attribute(data.RecoveryHp);
-        defense = new Attribute(data.Defense);
-        evasion = new Attribute(data.Evasion);
-        luck = new Attribute(data.Luck);
-        absorptionItem = new Attribute(data.AbsorptionItem);
+        maxHp = new Attribute(0, data.MaxHp);
+        reproductionHp = new Attribute(1, data.ReproductionHp);
+        recoveryHp = new Attribute(2, data.RecoveryHp);
+        defense = new Attribute(3,data.Defense);
+        evasion = new Attribute(4, data.Evasion);
+        speed = new Attribute(5, data.Speed);
+        luck = new Attribute(6, data.Luck);
+        absorptionItem = new Attribute(7, data.AbsorptionItem);
 
         attributeDict = new Dictionary<AttributeType, Attribute>();
         attributeDict.Add(AttributeType.MaxExp, maxHp);
@@ -137,6 +137,7 @@ public class PlayerStat : MonoBehaviour
     public float Evasion { get { return evasion.Value; } }
     public float Luck { get { return luck.Value; }}
     public float AbsorptionItem {  get { return absorptionItem.Value; } }
+    public Dictionary<AttributeType, Attribute> AttributeDict { get { return attributeDict; } }
 
     #endregion
 }

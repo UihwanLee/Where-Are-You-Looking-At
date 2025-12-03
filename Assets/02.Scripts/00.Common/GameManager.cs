@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    private Player player;
+
     private void Awake()
     {
         if(Instance == null)
@@ -17,16 +19,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private GameManager() { }
-
-    private Player player;
-
-    private void Start()
-    {
-        player = GameObject.Find("Player").GetComponent<Player>();
-    }
 
     #region 프로퍼티
 

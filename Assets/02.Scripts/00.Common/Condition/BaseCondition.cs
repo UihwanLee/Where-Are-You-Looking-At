@@ -19,8 +19,8 @@ public class BaseCondition : MonoBehaviour
     protected virtual void Initialize()
     {
         // 100 -> SO나 Json으로 설정해줘야함
-        maxHp = new Attribute(100);
-        hp = new Attribute(maxHp.Value);
+        maxHp = new Attribute(0, 100);
+        hp = new Attribute(1, maxHp.Value);
 
         conditionDict = new Dictionary<AttributeType, Attribute>();
         conditionDict.Add(AttributeType.Hp, hp);

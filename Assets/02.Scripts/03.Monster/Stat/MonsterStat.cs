@@ -78,10 +78,10 @@ public class MonsterStat : MonoBehaviour
 
     private void Initialize()
     {
-        maxHp = new Attribute(data.MaxHp);
-        speed = new Attribute(data.Speed);
-        atk = new Attribute(data.Atk);
-        spawnSpeed = new Attribute(data.SpawnSpeed);
+        maxHp = new Attribute(0, data.MaxHp);
+        speed = new Attribute(1, data.Speed);
+        atk = new Attribute(2, data.Atk);
+        spawnSpeed = new Attribute(3, data.SpawnSpeed);
 
         attributeDict = new Dictionary<AttributeType, Attribute>();
         attributeDict.Add(AttributeType.MaxExp, maxHp);

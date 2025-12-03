@@ -5,10 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class Attribute
 {
+    [SerializeField] private int _localIndex;
     [SerializeField] private float _value;
 
-    public Attribute(float value)
+    public Attribute(int localIndex, float value)
     {
+        _localIndex = localIndex;
         _value = value;
     }
 
@@ -28,6 +30,8 @@ public class Attribute
     }
 
     #region 프로퍼티
+
+    public int LocalIndex { get { return _localIndex; } }
     public float Value { get { return _value; } }
 
     #endregion
