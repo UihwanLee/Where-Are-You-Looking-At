@@ -12,8 +12,7 @@ public class AdvisorStatUI : MonoBehaviour
     [SerializeField] private Text advisorName;
     [SerializeField] private Text advisorSlot;
     [SerializeField] private List<Text> statTextList = new List<Text>();
-
-    private ClearWindowManager clearWindowManager;
+    [SerializeField] private ClearWindowManager clearWindowManager;
 
     private void Start()
     {
@@ -23,6 +22,7 @@ public class AdvisorStatUI : MonoBehaviour
     private void Reset()
     {
         window = transform.GetChild(0).gameObject;
+        clearWindowManager = transform.FindParent<ClearWindowManager>("ClearWindow");
         advisorIcon = transform.FindChild<Image>("Advisor_Icon");
         advisorName = transform.FindChild<Text>("Advisor_Name");
         advisorSlot = transform.FindChild<Text>("Advisor_Slot");
@@ -33,13 +33,19 @@ public class AdvisorStatUI : MonoBehaviour
     private void OnEnable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("등록: AdvisorStat -> OnAdvisorStatChange 이벤트");
             clearWindowManager.OnAdvisorStatChange += UpdateStatUI;
+        }
     }
 
     private void OnDisable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("해제: AdvisorStat -> OnAdvisorStatChange 이벤트");
             clearWindowManager.OnAdvisorStatChange -= UpdateStatUI;
+        }
     }
 
     public void SetWindow(bool active)

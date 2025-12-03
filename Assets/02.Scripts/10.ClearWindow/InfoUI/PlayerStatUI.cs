@@ -10,8 +10,7 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject statTextListParent;
     [SerializeField] private List<Text> statTextList = new List<Text>();
-
-    private ClearWindowManager clearWindowManager;
+    [SerializeField] private ClearWindowManager clearWindowManager;
 
     private void Start()
     {
@@ -21,6 +20,7 @@ public class PlayerStatUI : MonoBehaviour
     private void Reset()
     {
         window = transform.GetChild(0).gameObject;
+        clearWindowManager = transform.FindParent<ClearWindowManager>("ClearWindow");
         statTextListParent = GameObject.Find("StatInfoValue");
         statTextList = statTextListParent.transform.GetComponentsInChildren<Text>().ToList();
     }
@@ -28,7 +28,10 @@ public class PlayerStatUI : MonoBehaviour
     private void OnEnable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("PlayerStat -> OnPlayerStatChange 이벤트 등록");
             clearWindowManager.OnPlayerStatChange += UpdateStatUI;
+        }
     }
 
     private void OnDisable()
