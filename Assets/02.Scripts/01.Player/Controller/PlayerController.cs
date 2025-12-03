@@ -16,4 +16,10 @@ public class PlayerController : BaseController
         else if (context.phase == InputActionPhase.Canceled)
             moveDirection = Vector2.zero;
     }
+
+    public override void Death()
+    {
+        base.Death();
+        Debug.Log("player dead");
+    }
 }

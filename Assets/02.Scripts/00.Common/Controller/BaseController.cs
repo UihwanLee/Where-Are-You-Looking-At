@@ -32,4 +32,8 @@ public class BaseController : MonoBehaviour
         else if (moveDirection.x > 0)
             spriteRenderer.flipX = false;
     }
+
+    public virtual void Death()
+    {
+    }
 }

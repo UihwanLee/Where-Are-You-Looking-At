@@ -17,4 +17,4 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 100
   <CritChance>k__BackingField: 0
   <CritMultiplier>k__BackingField: 0
-  <ProjectileSpeed>k__BackingField: 0
+  <ProjectileSpeed>k__BackingField: 10

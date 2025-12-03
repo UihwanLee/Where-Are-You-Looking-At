@@ -8,6 +8,22 @@ public class PlayerCondition : BaseCondition
     [SerializeField] private Attribute exp;
     [SerializeField] private Attribute gold;
 
+    private bool isInvincible = false;
+    private float invincibleTime = 0.5f;
+    private float lastDamagedTime = 0f;
+
+    private void Update()
+    {
+        if (isInvincible)
+        {
+            lastDamagedTime += Time.deltaTime;
+            if (lastDamagedTime >= invincibleTime)
+            {
+                isInvincible = false;
+            }
+        }
+    }
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -45,5 +61,15 @@ public class PlayerCondition : BaseCondition
 
             // UI event Invoke
         }
+    }
+
+    public override void TakeDamage(Transform other, float damage, Color? color = null)
+    {
+        if (isInvincible) return;
+
+        base.TakeDamage(other, damage, color);
+
+        lastDamagedTime = 0f;
+        isInvincible = true;
     }
 }

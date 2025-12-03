@@ -27,8 +27,9 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.TryGetComponent<Monster>(out var monster))
         {
+            monster.Condition.TakeDamage(transform, damage);
             Destroy(gameObject);
         }
     }

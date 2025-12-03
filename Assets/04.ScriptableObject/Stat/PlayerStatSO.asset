@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c2fcb3d9375254cb6535ede0fa4d1e, type: 3}
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
-  <MaxHp>k__BackingField: 0
-  <ReproductionHp>k__BackingField: 0
+  <MaxHp>k__BackingField: 100
+  <ReproductionHp>k__BackingField: 0.1
   <RecoveryHp>k__BackingField: 0
-  <Defense>k__BackingField: 0
-  <Evasion>k__BackingField: 0
+  <Defense>k__BackingField: 10
+  <Evasion>k__BackingField: 10
   <Speed>k__BackingField: 5
-  <Luck>k__BackingField: 0
-  <AbsorptionItem>k__BackingField: 0
+  <Luck>k__BackingField: 5
+  <AbsorptionItem>k__BackingField: 10

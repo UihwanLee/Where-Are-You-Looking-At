@@ -20,7 +20,7 @@ public class MonsterController : BaseController
 
         if (target == null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Player player = GameManager.Instance.Player;
             if (player != null)
                 target = player.transform;
         }
@@ -39,7 +39,12 @@ public class MonsterController : BaseController
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // player trigger effect
+        Player player = collision.GetComponentInParent<Player>();   
+
+        if (player != null)
+        {
+            player.Condition.TakeDamage(player.transform, stat.Atk, Color.red);
+        }
     }
 
     public void Init(Transform playerTransform, MonsterSpawner spawner)
@@ -48,8 +53,10 @@ public class MonsterController : BaseController
         this.spawner = spawner;
     }
 
-    private void Die()
+    public override void Death()
     {
+        base.Death();
+
         spawner.RemoveActiveMonster(gameObject);
         PoolManager.Instance.ReleaseObject("Monster", gameObject);
     }

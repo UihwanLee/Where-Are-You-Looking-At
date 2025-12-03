@@ -11,9 +11,16 @@ public class BaseCondition : MonoBehaviour
 
     protected Dictionary<AttributeType, Attribute> conditionDict;
 
+    private BaseController controller;
+
     protected void Awake()
     {
         Initialize();
+    }
+
+    private void Start()
+    {
+        controller = GetComponent<BaseController>();
     }
 
     protected virtual void Initialize()
@@ -58,5 +65,11 @@ public class BaseCondition : MonoBehaviour
 
         // damage 적용
         Sub(AttributeType.Hp, damage);
+
+        if (hp.Value <= 0)
+        {
+            // death
+            controller.Death();
+        }
     }
 }

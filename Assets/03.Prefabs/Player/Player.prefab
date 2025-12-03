@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 2880515989786748118}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,14 +324,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp:
+    _localIndex: 0
     _value: 0
   hp:
+    _localIndex: 0
     _value: 0
   maxExp:
+    _localIndex: 0
     _value: 0
   exp:
+    _localIndex: 0
     _value: 0
   gold:
+    _localIndex: 0
     _value: 0
 --- !u!114 &2880515989786748118
 MonoBehaviour:
@@ -347,20 +352,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: dd1497f346ad0804f96dc7231f002e00, type: 2}
   maxHp:
+    _localIndex: 0
     _value: 0
   speed:
+    _localIndex: 0
     _value: 0
   reproductionHp:
+    _localIndex: 0
     _value: 0
   recoveryHp:
+    _localIndex: 0
     _value: 0
   defense:
+    _localIndex: 0
     _value: 0
   evasion:
+    _localIndex: 0
     _value: 0
   luck:
+    _localIndex: 0
     _value: 0
   absorptionItem:
+    _localIndex: 0
     _value: 0
 --- !u!1 &2571401063276817677
 GameObject:

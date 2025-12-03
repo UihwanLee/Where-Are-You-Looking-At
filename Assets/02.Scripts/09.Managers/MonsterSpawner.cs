@@ -27,7 +27,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameManager.Instance.Player.transform;
 
         PoolManager.Instance.CreatePool("Monster", monsterPrefab, maxMonsters);
         StartSpawn();
