@@ -14,6 +14,8 @@ public class AdvisorStatUI : MonoBehaviour
     [SerializeField] private List<Text> statTextList = new List<Text>();
     [SerializeField] private ClearWindowManager clearWindowManager;
 
+    [SerializeField] private List<Attribute> advisorAttributes = new List<Attribute>();
+
     private void Start()
     {
         clearWindowManager = ClearWindowManager.Instance;
@@ -53,13 +55,13 @@ public class AdvisorStatUI : MonoBehaviour
         window.SetActive(active);
     }
 
-    public void UpdateStatUI(List<Attribute> statList)
+    public void UpdateStatUI()
     {
-        if (statList.Count != statTextList.Count) return;
+        //if (statList.Count != statTextList.Count) return;
 
-        for (int i = 0; i < statList.Count; i++)
-        {
-            statTextList[i].text = statList[i].Value.ToString();
-        }
+        //for (int i = 0; i < statList.Count; i++)
+        //{
+        //    statTextList[i].text = statList[i].Value.ToString();
+        //}
     }
 }
