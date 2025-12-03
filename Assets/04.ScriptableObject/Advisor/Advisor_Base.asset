@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effce917cfca8cb468c667bf255d6eaf, type: 3}
+  m_Name: Advisor_Base
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: 0
+  <Name>k__BackingField: "\uC870\uC5B8\uC790(\uBCA0\uC774\uC9C1)"
+  <Desc>k__BackingField: "\uAE30\uBCF8\uC801\uC778 \uC870\uC5B8\uC790\uC785\uB2C8\uB2E4."
+  <Icon>k__BackingField: {fileID: 21300000, guid: 6dec272f202e1404ba5d033cbc8ac520, type: 3}
+  <Type>k__BackingField: 2
+  <StatSO>k__BackingField: {fileID: 11400000, guid: 5e2a87b265ab0f74e8fa1683d5e2855a, type: 2}
