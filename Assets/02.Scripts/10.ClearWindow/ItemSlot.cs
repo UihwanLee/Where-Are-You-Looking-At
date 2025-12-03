@@ -106,7 +106,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (manager.GetSlotTpye() == SlotType.Shop) return;
 
-        DragSlot.instance.dragSlot.icon.color = new Color(1, 1, 1, 1);
+        if(DragSlot.instance.dragSlot != null) DragSlot.instance.dragSlot.icon.color = new Color(1, 1, 1, 1);
         this.icon.color = new Color(1, 1, 1, 1);
 
         DragSlot.instance.HideDragItem();
