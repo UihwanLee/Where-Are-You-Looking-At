@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Advice
+public abstract class Advice : ISellable
 {
     private AdviceSO data;
 
@@ -12,6 +12,26 @@ public abstract class Advice
     }
 
     public abstract void Apply(IAdviceReceiver applicator);
+
+    public string GetName()
+    {
+        return data.Name;
+    }
+
+    public string GetDescription()
+    {
+        return data.Desc;
+    }
+
+    public Sprite GetSpriteIcon()
+    {
+        return data.Icon;
+    }
+
+    SellItemType ISellable.GetType()
+    {
+        return SellItemType.Advice;
+    }
 
     #region 프로퍼티
 

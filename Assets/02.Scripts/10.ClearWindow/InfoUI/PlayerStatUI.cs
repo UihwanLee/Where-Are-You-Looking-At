@@ -9,8 +9,15 @@ public class PlayerStatUI : MonoBehaviour
 {
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject statTextListParent;
-    [SerializeField] private ClearWindowManager clearWindowManager;
     [SerializeField] private List<Text> statTextList = new List<Text>();
+    [SerializeField] private ClearWindowManager clearWindowManager;
+
+    [SerializeField] private List<Attribute> playerAttributes = new List<Attribute>();
+
+    private void Start()
+    {
+        clearWindowManager = ClearWindowManager.Instance;
+    }
 
     private void Reset()
     {
@@ -23,13 +30,19 @@ public class PlayerStatUI : MonoBehaviour
     private void OnEnable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("등록: PlayerStat -> OnPlayerStatChange 이벤트");
             clearWindowManager.OnPlayerStatChange += UpdateStatUI;
+        }
     }
 
     private void OnDisable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("해제: PlayerStat -> OnPlayerStatChange 이벤트");
             clearWindowManager.OnPlayerStatChange -= UpdateStatUI;
+        }
     }
 
     public void SetWindow(bool active)
@@ -37,13 +50,15 @@ public class PlayerStatUI : MonoBehaviour
         window.SetActive(active);
     }
 
-    public void UpdateStatUI(List<Attribute> statList)
+    public void UpdateStatUI()
     {
-        if (statList.Count != statTextList.Count) return;
+        playerAttributes = GameManager.Instance.Player.Stat.AttributeDict.Values.OrderBy(attribute => attribute.LocalIndex).ToList();
 
-        for(int i=0; i<statList.Count; i++)
+        if (playerAttributes.Count != statTextList.Count) return;
+
+        for(int i=0; i< playerAttributes.Count; i++)
         {
-            statTextList[i].text = statList[i].Value.ToString();
+            statTextList[i].text = playerAttributes[i].Value.ToString();
         }
     }
 }

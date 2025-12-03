@@ -8,11 +8,18 @@ public class AdvisorStatUI : MonoBehaviour
 {
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject statTextListParent;
-    [SerializeField] private ClearWindowManager clearWindowManager;
     [SerializeField] private Image advisorIcon;
     [SerializeField] private Text advisorName;
     [SerializeField] private Text advisorSlot;
     [SerializeField] private List<Text> statTextList = new List<Text>();
+    [SerializeField] private ClearWindowManager clearWindowManager;
+
+    [SerializeField] private List<Attribute> advisorAttributes = new List<Attribute>();
+
+    private void Start()
+    {
+        clearWindowManager = ClearWindowManager.Instance;
+    }
 
     private void Reset()
     {
@@ -28,13 +35,19 @@ public class AdvisorStatUI : MonoBehaviour
     private void OnEnable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("등록: AdvisorStat -> OnAdvisorStatChange 이벤트");
             clearWindowManager.OnAdvisorStatChange += UpdateStatUI;
+        }
     }
 
     private void OnDisable()
     {
         if (clearWindowManager != null)
+        {
+            Debug.Log("해제: AdvisorStat -> OnAdvisorStatChange 이벤트");
             clearWindowManager.OnAdvisorStatChange -= UpdateStatUI;
+        }
     }
 
     public void SetWindow(bool active)
@@ -42,13 +55,13 @@ public class AdvisorStatUI : MonoBehaviour
         window.SetActive(active);
     }
 
-    public void UpdateStatUI(List<Attribute> statList)
+    public void UpdateStatUI()
     {
-        if (statList.Count != statTextList.Count) return;
+        //if (statList.Count != statTextList.Count) return;
 
-        for (int i = 0; i < statList.Count; i++)
-        {
-            statTextList[i].text = statList[i].Value.ToString();
-        }
+        //for (int i = 0; i < statList.Count; i++)
+        //{
+        //    statTextList[i].text = statList[i].Value.ToString();
+        //}
     }
 }
