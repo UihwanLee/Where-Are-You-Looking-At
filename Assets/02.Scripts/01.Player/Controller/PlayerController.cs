@@ -24,6 +24,6 @@ public class PlayerController : BaseController
     public override void Death()
     {
         base.Death();
-        Debug.Log("player dead");
+        GameManager.Instance.StopPlayMode();
     }
 }

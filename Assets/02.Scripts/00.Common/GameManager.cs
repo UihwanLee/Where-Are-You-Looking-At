@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,4 +31,11 @@ public class GameManager : MonoBehaviour
     public Player Player { get { return player; } }
 
     #endregion
+
+    public void StopPlayMode()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#endif
+    }
 }
