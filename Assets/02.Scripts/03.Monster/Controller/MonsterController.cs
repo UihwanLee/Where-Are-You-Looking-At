@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterController : BaseController
 {
+    private Monster monster;
     private MonsterStat stat;
 
     private Transform target;
@@ -11,7 +12,8 @@ public class MonsterController : BaseController
 
     private void Awake()
     {
-        stat = GetComponent<MonsterStat>();
+        monster = GetComponent<Monster>();
+        stat = monster.Stat;
     }
 
     private void Start()
