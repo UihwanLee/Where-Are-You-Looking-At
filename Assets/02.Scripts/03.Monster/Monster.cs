@@ -8,6 +8,11 @@ public class Monster : MonoBehaviour
     public MonsterController Controller { get; private set; }
     public BaseCondition Condition { get; private set; }
 
+    private void OnDisable()
+    {
+        Condition.Set(AttributeType.Hp, Stat.MaxHp);
+    }
+
     private void Awake()
     {
         Stat = GetComponent<MonsterStat>();

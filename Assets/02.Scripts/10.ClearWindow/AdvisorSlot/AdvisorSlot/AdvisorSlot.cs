@@ -105,6 +105,8 @@ public class AdvisorSlot : ItemSlot
 
     public override void OnDrop(PointerEventData eventData)
     {
+        if (DragSlot.instance.dragSlot == null) return;
+
         ISellable item = DragSlot.instance.dragSlot.item;
         if (item != null)
         {
