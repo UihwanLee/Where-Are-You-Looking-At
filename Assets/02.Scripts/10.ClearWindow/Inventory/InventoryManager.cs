@@ -148,24 +148,15 @@ public class InventoryManager : MonoBehaviour, ISlotable
         }
     }
 
-    public void DeleteItem(ISellable item)
+    public void DeleteItem(ItemSlot slot)
     {
-        if (currentSlotCount <= 0) return;
+        if (slot == null) return;
 
-        bool isFind = false;
-
-        // 현재 InventorySlot 중 해당하는 Item을 찾아 지운다.
-        for (int i = inventoryList.Count - 1; i >= 0; i--)
-        {
-            if (inventoryList[i].Item == item)
-            {
-                isFind = true;
-                inventoryList[i].ResetSlot();
-            }
-        }
+        // 현재 InventorySlot 중 해당하는 Item을 Index로 찾아 지운다.
+        inventoryList[slot.Index].ResetSlot();
 
         // Slot Index 감소
-        if (isFind) currentSlotCount = Mathf.Max(currentSlotCount - 1, 0);
+        currentSlotCount = Mathf.Max(currentSlotCount - 1, 0);
 
         // Inventory UI 갱신
         UpdateInventorySlot();
@@ -212,7 +203,7 @@ public class InventoryManager : MonoBehaviour, ISlotable
         // 골드 흭득
 
         // 아이템 삭제
-        DeleteItem(currentSlot.Item);
+        DeleteItem(currentSlot);
     }
 
     public void Close()

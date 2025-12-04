@@ -33,6 +33,16 @@ public class AdvisorSlot : ItemSlot
         }
     }
 
+    public void OffHighlight()
+    {
+        highlight.gameObject.SetActive(false);
+
+        foreach (AdviceSlot slot in adviceSlots)
+        {
+            slot.OffHighlight();
+        }
+    }
+
     public override void SetManager(ISlotable manager)
     {
         base.SetManager(manager);

@@ -30,6 +30,11 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         icon = transform.FindChild<Image>("ItemIcon");
     }
 
+    public void OffHighlight()
+    {
+        this.highlight.gameObject.SetActive(false);
+    }
+
     public virtual void SetManager(ISlotable manager)
     {
         this.manager = manager;
@@ -205,6 +210,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public bool IsPurchase { get { return isPurchase; } }
     public bool IsLock {  get { return isLock; } }
     public ISlotable Manager { get { return manager; } }
+    public int Index { get { return index; } }
 
     #endregion
 }

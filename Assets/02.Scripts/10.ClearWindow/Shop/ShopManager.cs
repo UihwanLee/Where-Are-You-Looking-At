@@ -55,6 +55,11 @@ public class ShopManager : MonoBehaviour, ISlotable
         purchaseBtn = transform.FindChild<Button>("Btn_Purchase");
     }
 
+    private void OnEnable()
+    {
+        OnClickRerollBtn();
+    }
+
     #region 상품 리스트 설정
 
     private void GenerateAdvice()
@@ -156,7 +161,7 @@ public class ShopManager : MonoBehaviour, ISlotable
     private void OnClickRerollBtn()
     {
         // 현재 선택한 슬롯 정보 초기화
-        clearWindowManager.SetPlayerStatUI();
+        if(clearWindowManager != null) clearWindowManager.SetPlayerStatUI();
         if (currentSlot != null)
         {
             currentSlot.ResetSlot();

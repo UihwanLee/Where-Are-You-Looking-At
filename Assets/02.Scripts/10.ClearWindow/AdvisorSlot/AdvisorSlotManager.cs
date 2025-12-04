@@ -30,6 +30,14 @@ public class AdvisorSlotManager : MonoBehaviour, ISlotable
         currentSlot = null;
     }
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < advisorSlots.Count; i++)
+        {
+            advisorSlots[i].OffHighlight();
+        }
+    }
+
     public void Reset()
     {
         advisorSlots = transform.GetComponentsInChildren<AdvisorSlot>().ToList();
