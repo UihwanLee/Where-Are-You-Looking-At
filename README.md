@@ -15,6 +15,7 @@ https://uihwanlee.itch.io/where-are-you-looking-at-test
 플레이어는 이를 관찰하고 판단하여 생존해야 합니다.
 
 ---
+<img width="643" height="368" alt="image" src="https://github.com/user-attachments/assets/ef69dab0-dcd5-4603-bf02-73d8b2764523" />
 
 ---
 
@@ -73,6 +74,9 @@ https://uihwanlee.itch.io/where-are-you-looking-at-test
 
 ### 2.6 스탯 시스템
 - 아이템 스탯이 플레이어에게 적용됨  
+
+<img width="646" height="358" alt="image" src="https://github.com/user-attachments/assets/22f8a0ce-69c2-4a71-a5ed-b8ef69a92cf2" />
+
 
 ## 3. 시스템 상세 설명
 ### 3.1 플레이어 시스템
@@ -150,6 +154,9 @@ https://uihwanlee.itch.io/where-are-you-looking-at-test
 - **스탯 부여:**  
   - 공격력, 공속 등 다양한 성능에 영향  
   - 적용 즉시 플레이어 능력치 갱신  
+
+<img width="656" height="362" alt="image" src="https://github.com/user-attachments/assets/134cadfd-c373-4e23-ba99-368f380ca9f4" />
+
 
 ## 4. 개발 로드맵
 ## 4.1 맵 구조 변경
