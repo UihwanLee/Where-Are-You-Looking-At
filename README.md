@@ -1,6 +1,9 @@
 # Where-Are-You-Looking-At
 프로토타입 프로젝트입니다.
 
+아래는 플레이 가능한 웹 링크입니다.
+https://uihwanlee.itch.io/where-are-you-looking-at-test
+
 # 액션 로그라이크 + 8번 출구 프로젝트
 
 ## 🎮 게임 정의
